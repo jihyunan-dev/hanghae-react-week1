@@ -1,11 +1,15 @@
+import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './common/GlobalStyles';
 import CustomRoutes from './common/routes';
+import { theme } from './common/theme';
 
 const App = () => {
     return (
         <>
             <GlobalStyles />
-            <CustomRoutes />
+            <ThemeProvider theme={theme}>
+                <CustomRoutes />
+            </ThemeProvider>
         </>
     );
 };
