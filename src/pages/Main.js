@@ -1,16 +1,20 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
+function getRandomNum(maxNum) {
+    return Math.ceil(Math.random() * maxNum);
+}
+
 const MainPage = () => {
     const navigate = useNavigate();
     const days = [
-        { title: '일', grade: 1, day: 'sunday' },
-        { title: '월', grade: 3, day: 'monday' },
-        { title: '화', grade: 2, day: 'tuesday' },
-        { title: '수', grade: 5, day: 'wednesday' },
-        { title: '목', grade: 4, day: 'thursday' },
-        { title: '금', grade: 4, day: 'friday' },
-        { title: '토', grade: 1, day: 'saturday' },
+        { title: '일', grade: getRandomNum(5), day: 'sunday' },
+        { title: '월', grade: getRandomNum(5), day: 'monday' },
+        { title: '화', grade: getRandomNum(5), day: 'tuesday' },
+        { title: '수', grade: getRandomNum(5), day: 'wednesday' },
+        { title: '목', grade: getRandomNum(5), day: 'thursday' },
+        { title: '금', grade: getRandomNum(5), day: 'friday' },
+        { title: '토', grade: getRandomNum(5), day: 'saturday' },
     ];
 
     const getGradeView = (grade) => {
