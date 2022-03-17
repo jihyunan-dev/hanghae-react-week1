@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import ContentWrapper from '../components/ContentWrapper';
 
 function getRandomNum(maxNum) {
     return Math.ceil(Math.random() * maxNum);
@@ -29,26 +30,28 @@ const MainPage = () => {
     };
 
     return (
-        <Container>
-            <Title>내 일주일은?</Title>
-            {days.map((day, i) => (
-                <DayWrapper key={`${day.title}-${i}`}>
-                    <DayTitle>{day.title}</DayTitle>
-                    {getGradeView(day.grade)}
-                    <DetailLinkBtn onClick={() => navigate(`/detail/${day.day}`)} />
-                </DayWrapper>
-            ))}
-        </Container>
+        <ContentWrapper>
+            <Container>
+                <Title>내 일주일은?</Title>
+                {days.map((day, i) => (
+                    <DayWrapper key={`${day.title}-${i}`}>
+                        <DayTitle>{day.title}</DayTitle>
+                        {getGradeView(day.grade)}
+                        <DetailLinkBtn onClick={() => navigate(`/detail/${day.day}`)} />
+                    </DayWrapper>
+                ))}
+            </Container>
+        </ContentWrapper>
     );
 };
 
 export default MainPage;
 
-const Container = styled.main`
+const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 20px;
+
 `;
 
 const Title = styled.h1`
