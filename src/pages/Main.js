@@ -8,6 +8,7 @@ function getRandomNum(maxNum) {
 
 const MainPage = () => {
     const navigate = useNavigate();
+    const today = new Date().getDay();
     const days = [
         { title: '일', grade: getRandomNum(5), day: 'sunday' },
         { title: '월', grade: getRandomNum(5), day: 'monday' },
@@ -18,12 +19,14 @@ const MainPage = () => {
         { title: '토', grade: getRandomNum(5), day: 'saturday' },
     ];
 
+    const sortedDays = [...days.slice(today, 7), ...days.slice(0, today)];
+
     const getGradeView = (grade) => {
         const temp = new Array(5).fill(0);
         return (
             <GradeBox>
                 {temp.map((ele, i) => (
-                    <Grade key={i} active={i + 1 <= grade}></Grade>
+                    <Grade key={i} active={i + 1 <= grade} />
                 ))}
             </GradeBox>
         );
@@ -33,7 +36,7 @@ const MainPage = () => {
         <ContentWrapper>
             <Container>
                 <Title>내 일주일은?</Title>
-                {days.map((day, i) => (
+                {sortedDays.map((day, i) => (
                     <DayWrapper key={`${day.title}-${i}`}>
                         <DayTitle>{day.title}</DayTitle>
                         {getGradeView(day.grade)}
@@ -51,7 +54,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
 `;
 
 const Title = styled.h1`
