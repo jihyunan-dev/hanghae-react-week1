@@ -13,6 +13,22 @@ const DetailPage = () => {
         setGrade(i + 1);
     };
 
+    const handleKeyDown = (e) => {
+        switch (parseInt(e.key, 10)) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                setGrade(parseInt(e.key, 10));
+                return;
+            default:
+                return;
+        }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
     return (
         <ContentWrapper>
             <Container>
