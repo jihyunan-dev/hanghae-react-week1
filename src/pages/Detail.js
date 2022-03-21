@@ -9,10 +9,12 @@ const DetailPage = () => {
     const { day } = useParams();
     const [grade, setGrade] = React.useState(Math.ceil(Math.random() * 5));
 
+    // 클릭으로 평점 매기기
     const handleClick = (i) => {
         setGrade(i + 1);
     };
 
+    // 키보드로 평점 매기기
     const handleKeyDown = (e) => {
         switch (parseInt(e.key, 10)) {
             case 1:

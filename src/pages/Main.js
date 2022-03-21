@@ -8,7 +8,8 @@ function getRandomNum(maxNum) {
 
 const MainPage = () => {
     const navigate = useNavigate();
-    const today = new Date().getDay();
+
+    // 일주일 정의 (title, grade는 렌더 / day는 url에 활용)
     const days = [
         { title: '일', grade: getRandomNum(5), day: 'sunday' },
         { title: '월', grade: getRandomNum(5), day: 'monday' },
@@ -19,8 +20,13 @@ const MainPage = () => {
         { title: '토', grade: getRandomNum(5), day: 'saturday' },
     ];
 
+    // 오늘이 무슨요일인지 확인
+    const today = new Date().getDay();
+
+    // 오늘이 가장 앞으로오게 정렬
     const sortedDays = [...days.slice(today, 7), ...days.slice(0, today)];
 
+    // 평점 렌더 함수
     const getGradeView = (grade) => {
         const temp = new Array(5).fill(0);
         return (

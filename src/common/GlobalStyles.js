@@ -7,7 +7,6 @@ import { createGlobalStyle } from 'styled-components';
 import { reset } from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
-    // reset.css 를 리액트에서 쉽게 사용하는 방법
     ${reset}
     // font 가져오기
     @font-face {
